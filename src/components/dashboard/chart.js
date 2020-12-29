@@ -1,6 +1,6 @@
 import { Button, Grid, Menu, MenuItem, TextField } from "@material-ui/core";
 import { KeyboardArrowDown } from "@material-ui/icons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -15,57 +15,16 @@ import {
   Bar,
 } from "recharts";
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-
 export default function Chart() {
+  useEffect(()=>{
+    getData()
+  },[])
   const types = [
     { id: 0, name: "BAR CHART" },
     { id: 1, name: "LINE CHART" },
     { id: 2, name: "AREA CHART" },
   ];
+  const [data, setData] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
   const [currentType, setCurrentType] = useState(0);
   const handleClick = (event) => {
@@ -77,6 +36,9 @@ export default function Chart() {
     setCurrentType(index);
   };
 
+  const getData = async()=>{
+    await fetch('http://localhost:8000/get-data').then(res=>res.json()).then(data=>setData(data))
+  }
   return (
     <>
       <Grid container>
@@ -156,7 +118,7 @@ export default function Chart() {
             )}
           </div>
         </Grid>
-        <Grid item xs={3} style={{marginTop:'1rem'}}>
+        <Grid item xs={3} style={{ marginTop: "1rem" }}>
           <Button
             variant="contained"
             color="primary"
@@ -198,7 +160,12 @@ export default function Chart() {
               {types[2].name}
             </MenuItem>
           </Menu>
-          <Grid container direction="column" spacing={3} style={{marginTop:'1rem'}}>
+          <Grid
+            container
+            direction="column"
+            spacing={3}
+            style={{ marginTop: "1rem" }}
+          >
             <Grid item>
               <TextField
                 id="date"
