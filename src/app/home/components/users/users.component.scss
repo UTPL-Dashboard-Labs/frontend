@@ -1,0 +1,20 @@
+.users-list{
+    overflow-y: scroll;
+    max-height: 80vh;
+}
+.list-group-item:hover{
+    cursor: pointer;
+}
+.users-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.users-list::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey; 
+    border-radius: 10px;
+}
+
+.users-list::-webkit-scrollbar-thumb {
+    background: lightblue; 
+    border-radius: 10px;
+}

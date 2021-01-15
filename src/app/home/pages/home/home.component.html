@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white">UTPL DASHBOARDS LABS</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="nav-wrapper">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li
+            class="nav-item"
+            [routerLink]="['/home']"
+            routerLinkActive="active"
+          >
+            <a class="nav-link" >OverView</a>
+          </li>
+          <li
+            class="nav-item"
+            [routerLink]="['/home/statictis']"
+            routerLinkActive="active"
+          >
+            <a class="nav-link ">Statistcs</a>
+          </li>
+          <li
+            class="nav-item"
+            [routerLink]="['/home/users']"
+            routerLinkActive="active"
+          >
+            <a class="nav-link" >Users</a>
+          </li>
+        </ul>
+      </div>
+      <i (click)="openModal(template)" class="text-white fas fa-cog"></i>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Ingresar Archivo</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <label for="formFileLg" class="form-label">Archivo (.xlsx)</label>
+      <input accept=".xlsx" class="form-control form-control-lg" id="formFileLg" type="file">
+    </div>
+  </div>
+</ng-template>

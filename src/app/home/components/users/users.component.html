@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row d-flex justify-content-center mt-3">
+    <div class="col-6">
+      <div class="mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="Ejem: depardo3@UTPL"
+          (keyup)="changeInput($event)"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <ul  class="list-group">
+        <li class="list-group-item" *ngFor="let user of filterList" [routerLink]="['/home/user', user.correo]" routerLinkActive="router-link-active">
+          {{ user.correo }}
+        </li>
+        <div *ngIf="!userToFind" class="users-list">
+          <li class="list-group-item" *ngFor="let user of usersList" [routerLink]="['/home/user', user.correo]" routerLinkActive="router-link-active" >
+            {{ user.correo }}
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
