@@ -39,4 +39,10 @@ export class HomeComponent implements OnInit {
   fileChange(event:any){
     this.file = event.target.files[0];
   }
+
+  deleteFile(){
+    this.dataservice.deleteFile().subscribe((res:any)=>{
+      Swal.fire({text:res.message})
+    })
+  }
 }

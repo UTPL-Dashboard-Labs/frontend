@@ -51,7 +51,9 @@ export class DataService {
   uploadFile(file:any){
     return this.http.post(`${this.urlApi}/upload`, file )
   }
-
+  deleteFile(){
+    return this.http.delete(`${this.urlApi}/remove-data`)
+  }
   getDataStatus(): Observable<any>{
     return this.http.get(`${this.urlApi}/data-status`)
   }

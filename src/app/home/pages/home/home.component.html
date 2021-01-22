@@ -55,6 +55,10 @@
     </button>
   </div>
   <div class="modal-body">
+    <div class='mb-3' style="display: flex; flex-direction: row; align-items: center;">
+      <p style="font-weight: bold;">Borrar último archivo. </p>
+      <button class="ml-3 btn btn-danger" (click)='deleteFile()'><i class="fas fa-trash"></i></button>
+    </div>
     <form enctype="multipart/form-data">
       <label for="formFileLg" class="form-label">Archivo (.xlsx)</label>
       <input accept=".xlsx" class="form-control form-control-lg" id="formFileLg" type="file"
