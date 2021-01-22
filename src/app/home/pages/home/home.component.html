@@ -38,25 +38,28 @@
           </li>
         </ul>
       </div>
-      <i (click)="openModal(template)" class="text-white fas fa-cog"></i>
+      <i (click)="uploadFileModal.show()" class="text-white fas fa-cog"></i>
     </div>
   </div>
 </nav>
 
+
 <router-outlet></router-outlet>
 
 
-<ng-template #template>
+<div bsModal #uploadFile="bs-modal" role="dialog" aria-labelledby="dialog-child-name" class="modal fade custom-modal">
   <div class="modal-header">
     <h4 class="modal-title pull-left">Ingresar Archivo</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)='uploadFileModal.hide()'>
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <div>
+    <form enctype="multipart/form-data">
       <label for="formFileLg" class="form-label">Archivo (.xlsx)</label>
-      <input accept=".xlsx" class="form-control form-control-lg" id="formFileLg" type="file">
-    </div>
+      <input accept=".xlsx" class="form-control form-control-lg" id="formFileLg" type="file"
+        (change)='fileChange($event)'>
+      <button type="button" class='mt-1 btn btn-primary' (click)="onSubmit()">Upload File</button>
+    </form>
   </div>
-</ng-template>
+</div>

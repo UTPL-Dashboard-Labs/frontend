@@ -1,6 +1,21 @@
-<highcharts-chart 
-  [Highcharts]="Highcharts"
-  [options]="chartOptions"
-  [callbackFunction]="chartCallback"
-  style="width: 100%; height: 90vh; display: block;"
-></highcharts-chart>
+<highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions" [callbackFunction]="chartCallback"
+  style="width: 100%; height: 90vh; display: block;"></highcharts-chart>
+
+<div bsModal #uploadFile="bs-modal" role="dialog" aria-labelledby="dialog-child-name" class="modal fade custom-modal">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Ingresar Archivo</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)='uploadFileModal.hide()'>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form enctype="multipart/form-data">
+      <label for="formFileLg" class="form-label">Archivo (.xlsx)</label>
+      <input accept=".xlsx" class="form-control form-control-lg" id="formFileLg" type="file"
+        (change)='fileChange($event)'>
+      <button type="button" class='mt-1 btn btn-primary' (click)="onSubmit()">Upload File</button>
+    </form>
+  </div>
+</div>
+
+<button class="fixedButton" (click)='uploadFileModal.show()'><i class="fas fa-cloud-upload-alt"></i></button>
