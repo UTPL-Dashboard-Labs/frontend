@@ -49,9 +49,7 @@ export class OverviewComponent implements OnInit {
   };
   ngOnInit(): void {
     this.dataService.getLiveDataStatus().subscribe(data => {
-
       this.getUsagePerImage()
-
     })
     this.dataService.socketEvents.asObservable().subscribe(res => {
       this.toastService.success(res)

@@ -11,7 +11,7 @@ export class DataService {
   socket: any;
   socketEvents = new Subject<any>();
   constructor(private http: HttpClient) { 
-    this.socket = io('http://localhost:8000')
+    this.socket = io(this.urlApi)
     this.socket.on('connection',(res:any)=>{
       this.socketEvents.next(res)
     })
